@@ -43,6 +43,115 @@ async function getAll(){
     }
 }
 
+
+
+async function getOne(id){
+    try{
+        const result = await db.doQuery('select * from employee where id=?', [id])
+        if(result.queryResult.length>0){
+        printWorkers(result.queryResult)
+        }
+        else{
+            console.log(`No employee found with id=${id}`);
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+
+}
+
+
+async function add(employee){
+    try{
+        const parameters= [
+            employee.id,
+            employee.firstname,
+            employee.lastname,
+            employee.department,
+            employee.salary
+        ];
+
+        const sql='insert into employee values(?,?,?,?,?)';
+        const status= await db.doQuery(sql, parameters);
+
+        console.log(status);
+
+    }
+    catch(err){
+        console.log(err);
+    }
+
+}
+
+async function remove(id){
+    try{
+        const status= await db.doQuery('delete from employee where id=?',[id]);
+        console.log(status);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+async function update(modifiedEmployee){
+    try{
+        const sql= 'update employee set firstname=?, lastname=?,' +
+        'department=?, salary=? where id=?';
+
+        console.log(Object.values(modifiedEmployee));
+        
+        const parameters =[
+            modifiedEmployee.firstname,
+            modifiedEmployee.lastname,
+            modifiedEmployee.department,
+            modifiedEmployee.salary,
+            modifiedEmployee.id
+        ]
+
+        const status = await db.doQuery(sql, parameters);
+        console.log(status);
+    }
+    catch(err){
+        console.log(err);
+
+    }
+
+}
+
+//main Function
+
 async function run(){
+
+    console.log('###### GetALL ########');
+    await getAll();
+
+    console.log('###### GetOne########');
+    await getOne(12);
+
+    console.log('##### remove #######');
+    await remove(202);
+    
+
+    console.log('##### add #####');
+    await add({
+        id:203,
+        firstname:'Nishan',
+        lastname: 'Tiwari',
+        department: 'IT operation',
+        salary: 5000
+    });
+
+    console.log("##### update ######");
+    await update({
+        id:203,
+        firstname:'Nishan',
+        lastname: 'Tiwariiiiiiii',
+        department: 'IT operation',
+        salary: 5000
+    });
+
+    console.log('###### GetALL ########');
+
     await getAll();
 }

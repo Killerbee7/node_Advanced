@@ -23,12 +23,19 @@ const db = new Database(options);
 run();
 
 //functions
+function printWorkers(employee){
+    for(const person of employee){
+        console.log(`${person.id}: ${person.firstname} ${person.lastname} `+
+        `Dept: ${person.department}, ${person.salary}`
+        );
+    }
+}
 
 async function getAll(){
     try{
         const result= await db.doQuery('select * from employee');
         if(result.resultSet){
-            console.log(result.queryResult);
+            printWorkers(result.queryResult);
         }
     }
     catch(error){

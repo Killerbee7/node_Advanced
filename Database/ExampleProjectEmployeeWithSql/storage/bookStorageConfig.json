@@ -1,0 +1,5 @@
+{
+    "storageFile": "books.json",
+    "adapterFile": "bookAdapter.js",
+    "key": "number"
+}

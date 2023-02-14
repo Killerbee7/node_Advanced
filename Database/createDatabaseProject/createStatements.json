@@ -1,0 +1,28 @@
+{
+    "host":"localhost",
+    "port":3306,
+    "admin":"boss",
+    "user":"jane",
+    "userpassword":"secret",
+    "dropUser":true,
+    "debug":true,
+    "database":"employeedb2",
+    "allowPublicKeyRetrieval": true,
+    "tables":[
+        {
+            "tableName":"employee",
+            "columns":[
+                "employeeId integer not null primary key",
+                "firstname varchar(20) not null",
+                "lastname varchar(30) not null",
+                "department varchar(15)",
+                "salary decimal(6,2)"
+            ],
+            "data":[
+                [1,"Matt","River","ict",4000],
+                [2, "Mary","Jones","admin",6000],
+                [3, "Vera","Jones",null,null]
+            ]
+        }
+    ]
+}

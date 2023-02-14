@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+    <link rel="stylesheet" href="/styles/basicStyles.css">
+</head>
+<body>
+    <main>
+        <h2>All employees</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee id</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% result.forEach(person => { %>
+                    <tr>
+                        <td><%= person.id %></td>
+                        <td><%= person.firstname %></td>
+                        <td><%= person.lastname %></td>
+                        <td><%= person.department %></td>
+                        <td><%= person.salary %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <a href="/"><button>Menu</button></a>
+    </main>
+</body>
+</html>

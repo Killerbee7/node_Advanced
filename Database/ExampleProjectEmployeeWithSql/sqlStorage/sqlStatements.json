@@ -1,0 +1,19 @@
+{
+    "getAll":[  "select id, firstname, lastname, department, salary",
+                "from employee"
+    ],
+    "getOne":[
+        "select id, firstname, lastname, department, salary",
+        "from employee where id=?"
+    ],
+    "insert":[
+        "insert into employee (id, firstname, lastname, department, salary)",
+        "values (?,?,?,?,?)"
+    ],
+    "update":[
+        "update employee set firstname=?, lastname=?, department=?,",
+        "salary=? where id=?"
+    ],
+    "remove":["delete from employee where id=?"],
+    "primaryKey":"id"
+}

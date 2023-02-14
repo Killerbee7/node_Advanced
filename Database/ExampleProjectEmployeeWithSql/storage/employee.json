@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "firstname": "Leila",
+        "lastname": "Hökki",
+        "department": "ict",
+        "salary": 4000
+    },
+    {
+        "id": 2,
+        "firstname": "Matt",
+        "lastname": "River",
+        "department": "ict",
+        "salary": 4000
+    }
+]
